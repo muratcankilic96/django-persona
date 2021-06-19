@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <img src="https://static.wikia.nocookie.net/megamitensei/images/c/cb/P5_Igor%27s_portrait.png" width="240" height="240">
+    <h1>Hey {{ user.username }} of Arcana {{ user.profile.arcana }}...</h1>
+    <h2>Welcome to the Velvet Room!</h2>
+    <h3>This is the realm between the mind and the matter...</h3>
+    <img alt="This is you..." class="rounded-circle" src={{ user.profile.image.url }} width="160" height="160">
+    <p class="text-secondary">{{ user.email }} is your address, huh?</p>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">
+                Change Your Destiny
+            </legend>
+            <div style="color:#000">{{ u_form|crispy }}
+                                      {{ p_form|crispy }}
+            </div>
+            
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">
+                Alter Path
+            </button>
+        </div>
+    </form>
+{% endblock content %}

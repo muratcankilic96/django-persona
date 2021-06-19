@@ -1,0 +1,32 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div style="background: #470644;
+    color: #000;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">
+                    You Were Chosen
+                </legend>
+                <div style="color:#000">{{ form|crispy }}</div>
+                
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">
+                    Get Velvet Room Key
+                </button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already got your Velvet Room key? 
+                <a class="ml-2" href="{% url 'login' %}">Go Inside</a>
+            </small>
+        </div>
+    </div>
+{% endblock content %}

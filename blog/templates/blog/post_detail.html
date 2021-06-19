@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="container" style='border:3px solid red; background-color: #001122'>
+    <div> <img class="rounded-circle" src="{{ object.author.profile.image.url }}" width=80 height=80></div>
+    <h6>{{ object.author }} posted on {{ object.date_posted|date:"d M Y H:i" }}</h6> 
+    <img src='{{ object.image }}' height=400 width=400></img> 
+    <h1>{{ object.title }}</h1> 
+    {{ object.content }}
+<br>
+{% if object.author == user %}
+    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Forecast Again</a>
+    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete Fortune</a>
+{% endif %}
+</div>
+{% endblock content %}

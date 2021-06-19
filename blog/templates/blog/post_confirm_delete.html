@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div style="background: #470644;
+    color: #000;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">
+                    Delete Fortune
+                </legend>
+                <h2>Will you cancel your fortune? "{{ object.title }}" will be gone.</h2>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">
+                    Delete Fortune
+                </button>
+                <a class="btn btn-outline-warning" href="{% url 'post-detail' object.id %}">
+                    Changed My Mind
+                </a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
