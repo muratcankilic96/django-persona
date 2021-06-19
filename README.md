@@ -6,6 +6,7 @@ The database is emptied, so you need to make migrations first.
 To prepare the server, run the commands
 
 ```
+python manage.py createsuperuser
 python manage.py makemigrations
 python manage.py migrate
 ```
